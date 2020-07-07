@@ -6,7 +6,20 @@ using System.Collections.Generic;
 namespace Socnet
 {
 
-    public class CommandHandler 
+    public abstract class CommandHandler 
+    {
+        public CommandHandler()
+        {
+            
+        }
+    }
+    
+    public class ClientHandler : CommandHandler
+    {
+        
+    }
+    
+    public class ServerHandler : CommandHandler
     {
        
     }

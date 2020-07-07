@@ -8,49 +8,55 @@ namespace Socnet
 
     public abstract class Command 
     {
-      abstract List<string> CommandList;
+        private string commandText;
+        private string CommandText 
+        {
+            get
+            {
+                return commandText;
+            }
+            set
+            {
+                commandText = !value.Contains(' ')?value:commandText;
+            }
+            
+        }
+        private int[] OverloadArgsCount;
+        public virtual void CommandAction()
+        {
+            throw new NotImplementedException();
+        }
     }
     
-    public static class SQLCommand : Command
+    public class SQLCommand : Command
     {
-       public static string GetMessageTextByID()
-       {
-          
-       }
-       
-       public static string ChangePassword(string OldPassword, string NewPassword)
-       {
-          
-       }
-       
-       public static void DeleteUser(string Password)
-       {
-          
-       }
-       
-       public static void ChangeUsername(string NewUsername)
-       {
-          
-       }
-       
-       public static void RegisterUser(string login, string password, string username)
-       {
-          
-       }
-       
-       public static void GetMessageCount()
-       {
-          
-       }
+        private static List<SQLCommand> SQLCommandList;
     }
     
     public class ClientCommand : Command
     {
-       
+        private static List<ClientCommand> ClientCommandList;
+        static ClientCommand()
+        {
+            ClientCommandList = new List<ClientCommand>();
+        }
+        public ClientCommand()
+        {
+            
+        }
     }
     
-    piblic class ServerCommand : Command
+    public class ServerCommand : Command
     {
-       
+        private static List<ServerCommand> ServerCommandList;
+        static ServerCommand()
+        {
+            ServerCommandList = new List<ServerCommand>();
+        }
+        public ServerCommand()
+        {
+            
+        }
     }
+    
 }
